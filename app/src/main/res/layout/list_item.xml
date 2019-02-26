@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/list_item_general_margin"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/list_item_background_color"
+    card_view:cardCornerRadius="@dimen/list_item_card_corner_radius"
+    card_view:cardElevation="@dimen/list_item_card_elevation">
+
+    <include layout="@layout/list_item_content" />
+
+</android.support.v7.widget.CardView>
