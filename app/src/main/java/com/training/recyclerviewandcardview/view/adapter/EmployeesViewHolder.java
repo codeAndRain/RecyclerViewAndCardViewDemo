@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.training.recyclerviewandcardview.R;
+import com.training.recyclerviewandcardview.listeners.OnItemClickedListener;
 import com.training.recyclerviewandcardview.model.Employee;
 
 class EmployeesViewHolder extends RecyclerView.ViewHolder {
@@ -20,8 +21,15 @@ class EmployeesViewHolder extends RecyclerView.ViewHolder {
         employeeNameTextView = itemView.findViewById(R.id.employee_name_text);
     }
 
-    public void bind(Employee employee) {
+    public void bind(final Employee employee, final OnItemClickedListener onItemClickedListener) {
         employeeIDTextView.setText(employee.getId());
         employeeNameTextView.setText(employee.getName());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickedListener.onEmployeeClicked(employee);
+            }
+        });
     }
 }

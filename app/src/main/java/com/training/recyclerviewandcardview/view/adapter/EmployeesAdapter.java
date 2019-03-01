@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.training.recyclerviewandcardview.R;
+import com.training.recyclerviewandcardview.listeners.OnItemClickedListener;
 import com.training.recyclerviewandcardview.model.Employee;
 
 import java.util.ArrayList;
@@ -14,7 +15,12 @@ import java.util.List;
 
 public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> {
 
+    private OnItemClickedListener onItemClickedListener;
+
     private List<Employee> employeeList = new ArrayList<>();
+
+    public EmployeesAdapter() {
+    }
 
     @NonNull
     @Override
@@ -25,9 +31,10 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EmployeesViewHolder employeesViewHolder, int position) {
-        Employee employee = employeeList.get(position);
-        employeesViewHolder.bind(employee);
+    public void onBindViewHolder(@NonNull final EmployeesViewHolder employeesViewHolder, int position) {
+        final Employee employee = employeeList.get(position);
+        employeesViewHolder.bind(employee, onItemClickedListener);
+        
     }
 
     @Override
@@ -40,5 +47,9 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
             employeeList.clear();
         }
         employeeList = employees;
+    }
+
+    public void setOnItemClickedListener(OnItemClickedListener listener) {
+        onItemClickedListener = listener;
     }
 }
