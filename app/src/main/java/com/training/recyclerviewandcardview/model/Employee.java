@@ -1,9 +1,11 @@
 package com.training.recyclerviewandcardview.model;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Random;
 
-public class Employee implements Serializable {
+public class Employee implements Parcelable {
 
     private String id;
     private String name;
@@ -49,4 +51,35 @@ public class Employee implements Serializable {
         employee.setName("Employee" + new Random().nextInt(100));
         return employee;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.name);
+    }
+
+    public Employee() {
+    }
+
+    protected Employee(Parcel in) {
+        this.id = in.readString();
+        this.name = in.readString();
+    }
+
+    public static final Parcelable.Creator<Employee> CREATOR = new Parcelable.Creator<Employee>() {
+        @Override
+        public Employee createFromParcel(Parcel source) {
+            return new Employee(source);
+        }
+
+        @Override
+        public Employee[] newArray(int size) {
+            return new Employee[size];
+        }
+    };
 }

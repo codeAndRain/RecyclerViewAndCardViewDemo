@@ -22,7 +22,7 @@ public class DetailsActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
-            Employee employee = (Employee) bundle.getSerializable(EMPLOYEE_EXTRA);
+            Employee employee = bundle.getParcelable(EMPLOYEE_EXTRA);
             if (employee != null) {
                 employeeNameText.setText(employee.getName());
             }
