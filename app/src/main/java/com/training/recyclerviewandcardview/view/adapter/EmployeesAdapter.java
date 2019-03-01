@@ -34,7 +34,7 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
     public void onBindViewHolder(@NonNull final EmployeesViewHolder employeesViewHolder, int position) {
         final Employee employee = employeeList.get(position);
         employeesViewHolder.bind(employee, onItemClickedListener);
-        
+
     }
 
     @Override

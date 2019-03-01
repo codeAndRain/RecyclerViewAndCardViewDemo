@@ -1,10 +1,10 @@
 package com.training.recyclerviewandcardview.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.training.recyclerviewandcardview.R;
 import com.training.recyclerviewandcardview.listeners.OnItemClickedListener;
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
 
     @Override
     public void onEmployeeClicked(Employee employee) {
-        Toast.makeText(this, employee.getName() + " has been clicked. " , Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra(DetailsActivity.EMPLOYEE_EXTRA, employee);
+        startActivity(intent);
     }
 }

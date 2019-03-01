@@ -1,8 +1,9 @@
 package com.training.recyclerviewandcardview.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Employee {
+public class Employee implements Serializable {
 
     private String id;
     private String name;
