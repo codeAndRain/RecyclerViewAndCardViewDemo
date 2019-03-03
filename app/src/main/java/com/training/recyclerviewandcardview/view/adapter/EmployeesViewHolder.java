@@ -28,7 +28,7 @@ class EmployeesViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickedListener.onEmployeeClicked(employee);
+                onItemClickedListener.onEmployeeClicked(employee, getAdapterPosition());
             }
         });
     }
