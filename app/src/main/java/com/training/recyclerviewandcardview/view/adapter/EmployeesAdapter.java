@@ -25,10 +25,11 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
     @NonNull
     @Override
     public EmployeesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View view = inflater.inflate(R.layout.list_item, viewGroup, false);
+        LayoutInflater inflater =LayoutInflater.from(viewGroup.getContext());
+        View view=inflater.inflate(R.layout.list_item, viewGroup, false);
         return new EmployeesViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull final EmployeesViewHolder employeesViewHolder, int position) {
@@ -51,5 +52,11 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
 
     public void setOnItemClickedListener(OnItemClickedListener listener) {
         onItemClickedListener = listener;
+    }
+
+    @Override
+    public long getItemId(int position) {
+
+        return super.getItemId(position);
     }
 }
