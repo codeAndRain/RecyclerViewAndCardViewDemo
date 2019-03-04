@@ -2,4 +2,5 @@
     <string name="app_name">RecyclerViewAndCardView</string>
     <string name="employee_id_label">ID:</string>
     <string name="employee_name_label">Name:</string>
+    <string name="clearButton">CLEAR</string>
 </resources>

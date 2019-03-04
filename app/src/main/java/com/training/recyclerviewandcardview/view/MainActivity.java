@@ -1,6 +1,8 @@
 package com.training.recyclerviewandcardview.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickedListener  {
+
+    public static final int PERSON_REQUEST_CODE = 1000;
+    public static final String PERSON_RESULT_EXTRA = "PERSON_RESULT_EXTRA";
+    public static final String ITEM_RESULT_POSITION = "ITEM_RESULT_POSITION";
 
     private EmployeesAdapter adapter;
     private RecyclerView recyclerView;
@@ -38,11 +44,33 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
-    public void onEmployeeClicked(Employee employee) {
+    public void onEmployeeClicked(Employee employee, int position) {
         Toast.makeText(this, employee.getName() + " has been clicked. " , Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra(SecondActivity.PERSON_EXTRA, employee);
+        intent.putExtra(SecondActivity.ITEM_POSITION, position);
+
+        startActivityForResult(intent, PERSON_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if(requestCode == PERSON_REQUEST_CODE){
+            if(resultCode == RESULT_OK){
+                if(data != null){
+                    int pos = data.getIntExtra(ITEM_RESULT_POSITION, 0);
+
+                    Employee employee = (Employee) data.getExtras().getSerializable(PERSON_RESULT_EXTRA);
+                    employeeList.set(pos, employee);
+                    adapter.notifyItemChanged(pos);
+
+                }
+            }
+        }
     }
 }

@@ -4,4 +4,9 @@
     <dimen name="list_item_card_corner_radius">8dp</dimen>
     <dimen name="list_item_card_elevation">8dp</dimen>
     <dimen name="emplyee_name">20sp</dimen>
+    <dimen name="textSize">28sp</dimen>
+    <dimen name="margin">30dp</dimen>
+    <dimen name="margin_start_end">8dp</dimen>
+    <dimen name="margin_top">30dp</dimen>
+    <dimen name="margin_top_editText">256dp</dimen>
 </resources>
