@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
     public void onEmployeeClicked(Employee employee, int position) {
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra(DetailsActivity.EMPLOYEE_EXTRA, employee);
-        intent.putExtra(DetailsActivity.EMPLOYEE_EXTRA_POSITION,position);
+        intent.putExtra(DetailsActivity.EMPLOYEE_EXTRA_POSITION, position);
         startActivityForResult(intent, EMPLOYEE_REQUEST_CODE);
     }
 
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
                         int position = data.getIntExtra(EMPLOYEE_RESULT_EXTRA_POSITION, 0);
                         employeeList.set(position, employee);
                         adapter.notifyItemChanged(position);
-                       Toast.makeText(this, employee.getName(), Toast.LENGTH_SHORT).show();
-                   }
+                        Toast.makeText(this, employee.getName(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }

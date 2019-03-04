@@ -28,8 +28,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         initViews();
 
         Bundle bundle = getIntent().getExtras();
-        Intent intent =getIntent();
-        position = intent.getIntExtra(EMPLOYEE_EXTRA_POSITION,0);
+        Intent intent = getIntent();
+        position = intent.getIntExtra(EMPLOYEE_EXTRA_POSITION, 0);
 
         if (bundle != null) {
             employee = (Employee) bundle.getSerializable(EMPLOYEE_EXTRA);
