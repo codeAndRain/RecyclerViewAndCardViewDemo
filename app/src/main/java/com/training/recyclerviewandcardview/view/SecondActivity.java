@@ -41,7 +41,6 @@ public class SecondActivity extends AppCompatActivity {
        });
 
         Intent intent = getIntent();
-//        String name = intent.getStringExtra(PERSON_EXTRA);
         Employee employee = (Employee) intent.getExtras().getSerializable(PERSON_EXTRA);
         position = intent.getIntExtra(ITEM_POSITION, 0);
         personName.setText(employee.getName());

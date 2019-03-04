@@ -62,16 +62,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
 
         if(requestCode == PERSON_REQUEST_CODE){
             if(resultCode == RESULT_OK){
-
                 if(data != null){
-
-//                    String person = data.getStringExtra(PERSON_RESULT_EXTRA);
                     int pos = data.getIntExtra(ITEM_RESULT_POSITION, 0);
 
                     Employee employee = (Employee) data.getExtras().getSerializable(PERSON_RESULT_EXTRA);
-
-//                    Employee employee = employeeList.get(pos);
-//                    employee.setName(person);
                     employeeList.set(pos, employee);
                     adapter.notifyItemChanged(pos);
 
