@@ -11,12 +11,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.training.recyclerviewandcardview.R;
+import com.training.recyclerviewandcardview.model.Employee;
 
 public class SecondActivity extends AppCompatActivity {
 
     public static final String PERSON_EXTRA = "PERSON_EXTRA";
     public static final String ITEM_POSITION = "ITEM_POSITION";
     public int position;
+    public String empId;
+
 
     private EditText personName;
     private Button clear_Button;
@@ -38,9 +41,11 @@ public class SecondActivity extends AppCompatActivity {
        });
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra(PERSON_EXTRA);
+//        String name = intent.getStringExtra(PERSON_EXTRA);
+        Employee employee = (Employee) intent.getExtras().getSerializable(PERSON_EXTRA);
         position = intent.getIntExtra(ITEM_POSITION, 0);
-        personName.setText(name);
+        personName.setText(employee.getName());
+        empId = employee.getId();
     }
 
     @Override
@@ -48,8 +53,11 @@ public class SecondActivity extends AppCompatActivity {
 
         String newName = personName.getText().toString();
 
+        Employee employee = new Employee();
+        employee.setName(newName);
+        employee.setId(empId);
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(MainActivity.PERSON_RESULT_EXTRA, newName);
+        intent.putExtra(MainActivity.PERSON_RESULT_EXTRA, employee);
         intent.putExtra(MainActivity.ITEM_RESULT_POSITION, position);
         setResult(RESULT_OK, intent);
         finish();

@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
         Toast.makeText(this, employee.getName() + " has been clicked. " , Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra(SecondActivity.PERSON_EXTRA, employee.getName());
+        intent.putExtra(SecondActivity.PERSON_EXTRA, employee);
         intent.putExtra(SecondActivity.ITEM_POSITION, position);
 
         startActivityForResult(intent, PERSON_REQUEST_CODE);
@@ -65,11 +65,13 @@ public class MainActivity extends AppCompatActivity implements OnItemClickedList
 
                 if(data != null){
 
-                    String person = data.getStringExtra(PERSON_RESULT_EXTRA);
+//                    String person = data.getStringExtra(PERSON_RESULT_EXTRA);
                     int pos = data.getIntExtra(ITEM_RESULT_POSITION, 0);
 
-                    Employee employee = employeeList.get(pos);
-                    employee.setName(person);
+                    Employee employee = (Employee) data.getExtras().getSerializable(PERSON_RESULT_EXTRA);
+
+//                    Employee employee = employeeList.get(pos);
+//                    employee.setName(person);
                     employeeList.set(pos, employee);
                     adapter.notifyItemChanged(pos);
 
