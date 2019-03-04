@@ -33,9 +33,7 @@ public class Employee implements Parcelable {
 
         Employee employee = (Employee) o;
 
-        if (getId() != null ? !getId().equals(employee.getId()) : employee.getId() != null)
-            return false;
-        return getName() != null ? getName().equals(employee.getName()) : employee.getName() == null;
+        return getId().equals(employee.getId());
     }
 
     @Override
