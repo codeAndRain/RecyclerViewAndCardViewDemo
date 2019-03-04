@@ -19,6 +19,7 @@ class EmployeesViewHolder extends RecyclerView.ViewHolder {
 
         employeeIDTextView = itemView.findViewById(R.id.employee_id_text);
         employeeNameTextView = itemView.findViewById(R.id.employee_name_text);
+
     }
 
     public void bind(final Employee employee, final OnItemClickedListener onItemClickedListener) {
@@ -28,7 +29,7 @@ class EmployeesViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickedListener.onEmployeeClicked(employee);
+                onItemClickedListener.onEmployeeClicked(employee, getAdapterPosition());
             }
         });
     }

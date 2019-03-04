@@ -30,11 +30,12 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
         return new EmployeesViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull final EmployeesViewHolder employeesViewHolder, int position) {
         final Employee employee = employeeList.get(position);
         employeesViewHolder.bind(employee, onItemClickedListener);
-        
+
     }
 
     @Override
@@ -51,5 +52,11 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesViewHolder> 
 
     public void setOnItemClickedListener(OnItemClickedListener listener) {
         onItemClickedListener = listener;
+    }
+
+    @Override
+    public long getItemId(int position) {
+
+        return super.getItemId(position);
     }
 }

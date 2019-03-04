@@ -4,6 +4,6 @@ import com.training.recyclerviewandcardview.model.Employee;
 
 public interface OnItemClickedListener {
 
-    void onEmployeeClicked(Employee employee);
+    void onEmployeeClicked(Employee employee, int position);
 
 }
